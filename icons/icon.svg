@@ -1,7 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="80" fill="#1a5276"/>
-  <circle cx="256" cy="200" r="80" fill="none" stroke="#2ecc71" stroke-width="12"/>
-  <circle cx="256" cy="200" r="55" fill="none" stroke="white" stroke-width="6"/>
-  <path d="M160 300 Q256 240 352 300 Q380 380 256 400 Q132 380 160 300" fill="#2ecc71" opacity="0.9"/>
-  <text x="256" y="340" text-anchor="middle" fill="white" font-size="60" font-weight="bold" font-family="Arial">HTC</text>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d9488"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#6ee7b7"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Head/Scalp -->
+  <circle cx="256" cy="230" r="100" fill="none" stroke="white" stroke-width="8" opacity="0.9"/>
+  <!-- Hair lines growing on scalp -->
+  <path d="M200 160 Q220 130 256 120 Q292 130 312 160" fill="none" stroke="url(#hair)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M190 180 Q210 145 256 130 Q302 145 322 180" fill="none" stroke="url(#hair)" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+  <path d="M185 200 Q205 160 256 140 Q307 160 327 200" fill="none" stroke="url(#hair)" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+  <!-- Small hair strands -->
+  <line x1="240" y1="128" x2="236" y2="112" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="122" x2="256" y2="104" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+  <line x1="272" y1="128" x2="276" y2="112" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+  <!-- Cross/Medical symbol -->
+  <rect x="242" y="300" width="28" height="70" rx="4" fill="white" opacity="0.9"/>
+  <rect x="221" y="321" width="70" height="28" rx="4" fill="white" opacity="0.9"/>
+  <!-- Sparkle -->
+  <circle cx="380" cy="140" r="6" fill="#fbbf24"/>
+  <circle cx="360" cy="120" r="3" fill="#fbbf24" opacity="0.6"/>
 </svg>

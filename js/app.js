@@ -190,25 +190,112 @@
     const data = loadData();
     app.innerHTML = `
       <section class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <h1 data-t="hero.title">${t('hero.title')}</h1>
-            <p data-t="hero.subtitle">${t('hero.subtitle')}</p>
-            <div class="hero-buttons">
-              <a href="#/register/patient" class="btn btn-primary btn-lg">${t('hero.cta')}</a>
-              <a href="#/register/doctor" class="btn btn-outline btn-lg">${t('hero.ctaDoctor')}</a>
-            </div>
+        <div class="hero-bg"></div>
+        <div class="hero-gradient"></div>
+        <div class="hero-particles"></div>
+
+        <!-- SVG Illustrations (visible on large screens) -->
+        <div class="hero-illustrations">
+          <!-- Left: Happy patient with great hair -->
+          <div class="hero-ill-left">
+            <svg viewBox="0 0 260 380" width="260" height="380" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Body -->
+              <ellipse cx="130" cy="340" rx="60" ry="30" fill="#14b8a6" opacity="0.15"/>
+              <rect x="90" y="220" width="80" height="120" rx="30" fill="#14b8a6" opacity="0.2"/>
+              <!-- Neck -->
+              <rect x="115" y="190" width="30" height="40" rx="8" fill="#fcd5b5"/>
+              <!-- Head -->
+              <ellipse cx="130" cy="150" rx="52" ry="58" fill="#fcd5b5"/>
+              <!-- Hair - full, thick, healthy -->
+              <path d="M78 140 Q78 80 130 72 Q182 80 182 140 Q178 95 130 88 Q82 95 78 140Z" fill="#1a1a2e"/>
+              <path d="M80 135 Q80 85 130 78 Q180 85 180 135" fill="#2d2d44"/>
+              <!-- Hair sides -->
+              <path d="M78 140 Q74 120 80 105 Q78 130 82 145Z" fill="#1a1a2e"/>
+              <path d="M182 140 Q186 120 180 105 Q182 130 178 145Z" fill="#1a1a2e"/>
+              <!-- Face -->
+              <ellipse cx="112" cy="148" rx="6" ry="7" fill="#1a1a2e"/>
+              <ellipse cx="148" cy="148" rx="6" ry="7" fill="#1a1a2e"/>
+              <!-- Smile -->
+              <path d="M115 170 Q130 185 145 170" stroke="#c9755d" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <!-- Eyebrows -->
+              <path d="M102 134 Q112 128 120 133" stroke="#1a1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M140 133 Q148 128 158 134" stroke="#1a1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <!-- Sparkles around hair -->
+              <circle cx="65" cy="100" r="4" fill="#fbbf24" opacity="0.8">
+                <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="195" cy="90" r="3" fill="#fbbf24" opacity="0.6">
+                <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="170" cy="70" r="3.5" fill="#34d399" opacity="0.7">
+                <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+              </circle>
+              <!-- Thumbs up -->
+              <g transform="translate(180, 240) rotate(-15)">
+                <rect x="0" y="10" width="20" height="40" rx="8" fill="#fcd5b5"/>
+                <rect x="2" y="-10" width="14" height="25" rx="7" fill="#fcd5b5"/>
+              </g>
+              <!-- Success checkmark circle -->
+              <circle cx="210" cy="200" r="18" fill="#059669" opacity="0.9"/>
+              <path d="M202 200 L208 206 L220 194" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </div>
-          <div class="hero-image">
-            <div class="hero-graphic">
-              <svg viewBox="0 0 200 200" class="hero-svg">
-                <circle cx="100" cy="100" r="90" fill="none" stroke="#2ecc71" stroke-width="2" opacity="0.3"/>
-                <circle cx="100" cy="100" r="70" fill="none" stroke="#1a5276" stroke-width="2" opacity="0.5"/>
-                <circle cx="100" cy="60" r="25" fill="#1a5276" opacity="0.8"/>
-                <path d="M70 100 Q100 70 130 100 Q140 130 100 150 Q60 130 70 100" fill="#2ecc71" opacity="0.6"/>
-                <text x="100" y="110" text-anchor="middle" fill="white" font-size="14" font-weight="bold">HTC</text>
-              </svg>
-            </div>
+
+          <!-- Right: Professional doctor -->
+          <div class="hero-ill-right">
+            <svg viewBox="0 0 260 380" width="260" height="380" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Body / Lab coat -->
+              <ellipse cx="130" cy="345" rx="60" ry="28" fill="#0d9488" opacity="0.12"/>
+              <path d="M80 230 L80 350 Q80 360 90 360 L170 360 Q180 360 180 350 L180 230 Q160 250 130 248 Q100 250 80 230Z" fill="white" opacity="0.9" stroke="#e2e8f0" stroke-width="1"/>
+              <!-- Coat collar -->
+              <path d="M100 230 L120 255 L130 240 L140 255 L160 230" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+              <!-- Stethoscope -->
+              <path d="M110 250 Q100 280 115 295" stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="115" cy="298" r="8" fill="#64748b"/>
+              <circle cx="115" cy="298" r="4" fill="#94a3b8"/>
+              <!-- Neck -->
+              <rect x="117" y="195" width="26" height="38" rx="7" fill="#d4a574"/>
+              <!-- Head -->
+              <ellipse cx="130" cy="155" rx="48" ry="54" fill="#d4a574"/>
+              <!-- Hair - professional, short -->
+              <path d="M82 145 Q82 95 130 88 Q178 95 178 145 Q175 105 130 98 Q85 105 82 145Z" fill="#1a1a2e"/>
+              <!-- Face -->
+              <ellipse cx="113" cy="152" rx="5" ry="6" fill="#1a1a2e"/>
+              <ellipse cx="147" cy="152" rx="5" ry="6" fill="#1a1a2e"/>
+              <!-- Glasses -->
+              <rect x="100" y="143" width="26" height="18" rx="9" stroke="#64748b" stroke-width="2" fill="none"/>
+              <rect x="134" y="143" width="26" height="18" rx="9" stroke="#64748b" stroke-width="2" fill="none"/>
+              <line x1="126" y1="152" x2="134" y2="152" stroke="#64748b" stroke-width="2"/>
+              <!-- Smile -->
+              <path d="M118 172 Q130 182 142 172" stroke="#a0694b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <!-- Medical cross on coat -->
+              <rect x="124" y="260" width="12" height="30" rx="2" fill="#0d9488" opacity="0.7"/>
+              <rect x="118" y="268" width="24" height="12" rx="2" fill="#0d9488" opacity="0.7"/>
+              <!-- Clipboard in hand -->
+              <g transform="translate(175, 260)">
+                <rect x="0" y="0" width="30" height="40" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+                <rect x="8" y="-4" width="14" height="8" rx="3" fill="#94a3b8"/>
+                <line x1="6" y1="12" x2="24" y2="12" stroke="#cbd5e1" stroke-width="1.5"/>
+                <line x1="6" y1="18" x2="24" y2="18" stroke="#cbd5e1" stroke-width="1.5"/>
+                <line x1="6" y1="24" x2="20" y2="24" stroke="#cbd5e1" stroke-width="1.5"/>
+                <line x1="6" y1="30" x2="22" y2="30" stroke="#cbd5e1" stroke-width="1.5"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="hero-content">
+          <span class="hero-badge">✨ منصة موثوقة ومعتمدة</span>
+          <h1 class="hero-title">${t('hero.title').replace('شعر صحي', '<span class="gradient-text">شعر صحي</span>')}</h1>
+          <p class="hero-subtitle">${t('hero.subtitle')}</p>
+          <div class="hero-ctas">
+            <a href="#/register/patient" class="btn btn-accent btn-lg pulse-btn">${t('hero.cta')}</a>
+            <a href="#/register/doctor" class="btn btn-outline-light btn-lg">${t('hero.ctaDoctor')}</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-pill"><strong>${data.users.filter(u=>u.type==='patient').length * 150}+</strong> ${t('stats.patients')}</div>
+            <div class="stat-pill"><strong>${data.users.filter(u=>u.type==='doctor').length * 80}+</strong> ${t('stats.doctors')}</div>
+            <div class="stat-pill"><strong>12+</strong> ${t('stats.countries')}</div>
           </div>
         </div>
       </section>
@@ -216,60 +303,107 @@
       <!-- Ad Banner -->
       <div class="ad-banner">${t('ad')}</div>
 
-      <section class="features" id="features">
-        <div class="container">
+      <section class="section section-dark" id="features">
+        <div class="section-header light">
+          <span class="section-badge">🏥 لماذا نحن</span>
           <h2 class="section-title">${t('features.title')}</h2>
-          <div class="features-grid">
-            ${['f1','f2','f3','f4','f5','f6'].map((f,i) => `
-              <div class="feature-card" style="animation-delay:${i*0.1}s">
-                <div class="feature-icon">${['🏥','📋','⭐','💰','📞','🔒'][i]}</div>
-                <h3>${t('features.'+f+'.title')}</h3>
-                <p>${t('features.'+f+'.desc')}</p>
-              </div>
-            `).join('')}
-          </div>
+          <p class="section-sub">نقدم لك تجربة متكاملة للحصول على أفضل خدمة زراعة شعر</p>
+        </div>
+        <div class="features-grid">
+          ${['f1','f2','f3','f4','f5','f6'].map((f,i) => `
+            <div class="feature-card" style="animation: fadeInUp 0.6s ease ${i*0.1}s both">
+              <div class="feature-icon ${['teal','blue','orange','green','purple','rose'][i]}">${['🏥','📋','⭐','💰','📞','🔒'][i]}</div>
+              <h3>${t('features.'+f+'.title')}</h3>
+              <p>${t('features.'+f+'.desc')}</p>
+            </div>
+          `).join('')}
         </div>
       </section>
 
-      <section class="stats-section">
-        <div class="container">
+      <section class="stats-section section-gradient">
+        <div class="section-header">
+          <span class="section-badge">📊 إحصائيات</span>
           <h2 class="section-title">${t('stats.title')}</h2>
-          <div class="stats-grid">
-            <div class="stat-card"><div class="stat-number">${data.users.filter(u=>u.type==='patient').length * 150}+</div><div class="stat-label">${t('stats.patients')}</div></div>
-            <div class="stat-card"><div class="stat-number">${data.users.filter(u=>u.type==='doctor').length * 80}+</div><div class="stat-label">${t('stats.doctors')}</div></div>
-            <div class="stat-card"><div class="stat-number">${data.cases.length * 200}+</div><div class="stat-label">${t('stats.cases')}</div></div>
-            <div class="stat-card"><div class="stat-number">12+</div><div class="stat-label">${t('stats.countries')}</div></div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">${data.users.filter(u=>u.type==='patient').length * 150}+</div>
+            <div class="stat-label">${t('stats.patients')}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${data.users.filter(u=>u.type==='doctor').length * 80}+</div>
+            <div class="stat-label">${t('stats.doctors')}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">${data.cases.length * 200}+</div>
+            <div class="stat-label">${t('stats.cases')}</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">${t('stats.countries')}</div>
           </div>
         </div>
       </section>
 
-      <section class="testimonials">
-        <div class="container">
+      <section class="section">
+        <div class="section-header">
+          <span class="section-badge">💬 آراء المرضى</span>
           <h2 class="section-title">${t('testimonials.title')}</h2>
-          <div class="testimonial-grid">
-            ${[
-              { name: 'أحمد م.', text: 'تجربة رائعة! وجدت أفضل طبيب في تركيا بسعر معقول.', text_en: 'Amazing experience! Found the best doctor in Turkey at a reasonable price.', rating: 5 },
-              { name: 'خالد ع.', text: 'المنصة سهلة الاستخدام والنتائج فاقت توقعاتي.', text_en: 'The platform is easy to use and results exceeded my expectations.', rating: 5 },
-              { name: 'عمر ح.', text: 'خدمة عملات ممتازة وتواصل مستمر مع الطبيب.', text_en: 'Excellent customer service and continuous communication with the doctor.', rating: 4 }
-            ].map(t2 => `
-              <div class="testimonial-card">
-                <div class="testimonial-stars">${'⭐'.repeat(t2.rating)}</div>
-                <p class="testimonial-text">"${localStorage.getItem('lang')==='en' ? t2.text_en : t2.text}"</p>
-                <div class="testimonial-author">— ${t2.name}</div>
+        </div>
+        <div class="testimonial-grid">
+          ${[
+            { name: 'أحمد م.', text: 'تجربة رائعة! وجدت أفضل طبيب في تركيا بسعر معقول. النتائج كانت مذهلة.', text_en: 'Amazing experience! Found the best doctor in Turkey at a reasonable price. The results were stunning.', rating: 5 },
+            { name: 'خالد ع.', text: 'المنصة سهلة الاستخدام والنتائج فاقت توقعاتي. أنصح بها بشدة.', text_en: 'The platform is easy to use and results exceeded my expectations. Highly recommend.', rating: 5 },
+            { name: 'عمر ح.', text: 'خدمة عملاء ممتازة وتواصل مستمر مع الطبيب. تجربة مميزة من البداية للنهاية.', text_en: 'Excellent customer service and continuous communication with the doctor. A premium experience from start to finish.', rating: 4 }
+          ].map(t2 => `
+            <div class="testimonial-card">
+              <div class="testimonial-stars">${'⭐'.repeat(t2.rating)}</div>
+              <p class="testimonial-text">"${localStorage.getItem('lang')==='en' ? t2.text_en : t2.text}"</p>
+              <div class="testimonial-author">
+                <div class="test-avatar">${t2.name.charAt(0)}</div>
+                <div class="test-author">
+                  <strong>${t2.name}</strong>
+                  <small>مريض موثق</small>
+                </div>
               </div>
-            `).join('')}
-          </div>
+            </div>
+          `).join('')}
         </div>
       </section>
 
       <section class="cta-section">
-        <div class="container">
+        <div class="cta-card">
           <h2>${t('ctaSection.title')}</h2>
           <p>${t('ctaSection.subtitle')}</p>
-          <a href="#/register/patient" class="btn btn-primary btn-lg">${t('ctaSection.btn')}</a>
+          <div class="cta-buttons">
+            <a href="#/register/patient" class="btn btn-accent btn-lg">${t('ctaSection.btn')}</a>
+          </div>
         </div>
       </section>
     `;
+
+    // Animate stat counters
+    setTimeout(animateCounters, 300);
+  }
+
+  // Animate stat numbers on scroll
+  function animateCounters() {
+    document.querySelectorAll('.stat-number').forEach(el => {
+      const text = el.textContent;
+      const num = parseInt(text.replace(/[^0-9]/g, ''));
+      if (!num || num === 0) return;
+      const suffix = text.replace(/[0-9]/g, '');
+      let current = 0;
+      const step = Math.ceil(num / 40);
+      const interval = setInterval(() => {
+        current += step;
+        if (current >= num) {
+          current = num;
+          clearInterval(interval);
+        }
+        el.textContent = current + suffix;
+      }, 30);
+    });
   }
 
   // ====== LOGIN ======
@@ -296,7 +430,7 @@
               </div>
               <button type="submit" class="btn btn-primary btn-block">${t('login.btn')}</button>
             </form>
-            <p class="auth-footer"><a href="#/forgot-password" style="color:#e74c3c;font-weight:600">${t('login.forgotPassword')}</a></p>
+            <p class="auth-footer"><a href="#/forgot-password" class="forgot-password-link">🔒 ${t('login.forgotPassword')}</a></p>
             <p class="auth-footer">${t('login.noAccount')} <a href="#/register/patient">${t('login.signUp')}</a></p>
           </div>
         </div>

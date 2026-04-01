@@ -1,11 +1,11 @@
 {
-  "name": "Hair Transplant Connect",
+  "name": "Hair Transplant Connect - زراعة الشعر",
   "short_name": "HTC",
-  "description": "منصة ربط مرضى زراعة الشعر بالأطباء - Connecting Hair Transplant Patients with Doctors",
+  "description": "منصة ربط مرضى زراعة الشعر بالأطباء المعتمدين - Connecting Hair Transplant Patients with Certified Doctors",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1a5276",
+  "background_color": "#f8fafb",
+  "theme_color": "#0d9488",
   "orientation": "portrait-primary",
   "lang": "ar",
   "dir": "rtl",
@@ -15,18 +15,6 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
-    },
-    {
-      "src": "icons/icon-192.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icons/icon-512.svg",
-      "sizes": "512x512",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
     }
   ],
   "categories": ["health", "medical", "lifestyle"],
