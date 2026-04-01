@@ -186,6 +186,8 @@
     else if (route === '/login') { renderLogin(); matched = true; }
     else if (route === '/forgot-password') { renderForgotPassword(); matched = true; }
     else if (route === '/about') { renderAbout(); matched = true; }
+    else if (route === '/privacy') { renderPrivacy(); matched = true; }
+    else if (route === '/terms') { renderTerms(); matched = true; }
     else if (route === '/register/patient') { renderRegister('patient'); matched = true; }
     else if (route === '/register/doctor') { renderRegister('doctor'); matched = true; }
 
@@ -706,6 +708,104 @@
             <div class="hero-ctas">
               <a href="#/register/patient" class="btn btn-accent btn-lg">سجّل كمريض</a>
               <a href="#/register/doctor" class="btn btn-outline btn-lg">انضم كطبيب</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ====== PRIVACY POLICY ======
+  function renderPrivacy() {
+    const lang = localStorage.getItem('lang') || 'ar';
+    const app = document.getElementById('app');
+    const isEn = lang === 'en';
+    app.innerHTML = `
+      <div class="container">
+        <div class="about-page">
+          <div class="about-hero">
+            <h1>${isEn ? 'Privacy Policy' : 'سياسة الخصوصية'}</h1>
+            <p class="about-subtitle">${isEn ? 'Last updated: April 2026' : 'آخر تحديث: أبريل 2026'}</p>
+          </div>
+          <div style="background:var(--bg-card);padding:32px;border-radius:14px;box-shadow:var(--shadow-md);line-height:2;color:var(--text)">
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '1. Information We Collect' : '1. جمع المعلومات'}</h2>
+            <p>${isEn ? 'We collect information you provide when registering, including your name, email address, phone number, and medical photos. This information is necessary to connect patients with certified hair transplant doctors.' : 'نقوم بجمع المعلومات التي تقدمها عند التسجيل، بما في ذلك الاسم، البريد الإلكتروني، رقم الهاتف، والصور الطبية. هذه المعلومات ضرورية لربط المرضى بالأطباء المعتمدين.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '2. How We Use Your Information' : '2. استخدام المعلومات'}</h2>
+            <p>${isEn ? 'We use personal information to provide our platform services, including account management, displaying cases to doctors, and facilitating communication. We do not sell or share your personal information with third parties without your consent.' : 'نستخدم المعلومات الشخصية لتقديم خدمات المنصة، بما في ذلك إنشاء الحسابات، عرض الحالات للأطباء، وتسهيل التواصل. لا نبيع أو نشارك معلوماتك مع أطراف ثالثة دون موافقتك.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '3. Data Protection' : '3. حماية المعلومات'}</h2>
+            <p>${isEn ? 'We implement appropriate security measures to protect your information from unauthorized access, modification, or disclosure. Sensitive data is encrypted and stored securely.' : 'نتخذ إجراءات أمنية مناسبة لحماية معلوماتك من الوصول غير المصرح به. يتم تشفير البيانات الحساسة وتخزينها بشكل آمن.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '4. Medical Photos' : '4. الصور الطبية'}</h2>
+            <p>${isEn ? 'Medical photos uploaded to the platform are used solely for case evaluation by certified doctors. These photos are protected and are not shared with any third party.' : 'الصور الطبية تُستخدم فقط لتقييم حالتك من قبل الأطباء المعتمدين. هذه الصور محمية ولا يتم مشاركتها مع أي طرف ثالث.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '5. Cookies' : '5. ملفات تعريف الارتباط'}</h2>
+            <p>${isEn ? 'We use cookies to improve your experience, save preferences, and analyze site usage.' : 'نستخدم الكوكيز لتحسين تجربتك، وحفظ تفضيلاتك، وتحليل استخدام الموقع.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '6. Your Rights' : '6. حقوقك'}</h2>
+            <p>${isEn ? 'You have the right to access, modify, or delete your personal information at any time. You may also request complete account deletion.' : 'لديك الحق في الوصول إلى معلوماتك وتعديلها أو حذفها. يمكنك أيضاً طلب حذف حسابك بالكامل.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '7. Children\'s Privacy' : '7. خصوصية الأطفال'}</h2>
+            <p>${isEn ? 'Our platform is not intended for users under 18 years of age. We do not knowingly collect information from minors.' : 'المنصة غير مخصصة للمستخدمين أقل من 18 عاماً. لا نجمع معلومات من القاصرين.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '8. Changes to This Policy' : '8. التغييرات'}</h2>
+            <p>${isEn ? 'We may update this privacy policy from time to time. We will notify users of any significant changes.' : 'قد نحدّث سياسة الخصوصية من وقت لآخر. سنخطرك بأي تغييرات جوهرية.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '9. Contact Us' : '9. التواصل'}</h2>
+            <p>${isEn ? 'If you have questions about this privacy policy, contact us at:' : 'للاستفسارات:'} <strong>privacy@htc.com</strong></p>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ====== TERMS OF USE ======
+  function renderTerms() {
+    const lang = localStorage.getItem('lang') || 'ar';
+    const app = document.getElementById('app');
+    const isEn = lang === 'en';
+    app.innerHTML = `
+      <div class="container">
+        <div class="about-page">
+          <div class="about-hero">
+            <h1>${isEn ? 'Terms of Use' : 'شروط الاستخدام'}</h1>
+            <p class="about-subtitle">${isEn ? 'Last updated: April 2026' : 'آخر تحديث: أبريل 2026'}</p>
+          </div>
+          <div style="background:var(--bg-card);padding:32px;border-radius:14px;box-shadow:var(--shadow-md);line-height:2;color:var(--text)">
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '1. Acceptance' : '1. القبول'}</h2>
+            <p>${isEn ? 'By using Hair Transplant Connect, you agree to these terms and conditions. If you do not agree with any part, please do not use the platform.' : 'باستخدام المنصة، فإنك توافق على هذه الشروط. إذا كنت لا توافق على أي جزء، يرجى عدم استخدام المنصة.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '2. Service Description' : '2. وصف الخدمة'}</h2>
+            <p>${isEn ? 'The platform is an intermediary connecting hair transplant patients with specialized doctors. We do not provide direct medical services and are not responsible for surgical outcomes.' : 'المنصة وسيط يربط مرضى زراعة الشعر بالأطباء المتخصصين. نحن لا نقدم خدمات طبية مباشرة ولا نتحمل مسؤولية نتائج العمليات.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '3. User Accounts' : '3. حسابات المستخدمين'}</h2>
+            <p>${isEn ? 'Registration information must be accurate. You are responsible for maintaining the confidentiality of your password.' : 'يجب أن تكون المعلومات المقدمة صحيحة. أنت مسؤول عن سرية كلمة مرورك.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '4. Doctor Obligations' : '4. التزامات الأطباء'}</h2>
+            <p>${isEn ? 'Doctors must provide accurate information about their qualifications and hold valid medical licenses.' : 'يجب على الأطباء تقديم معلومات دقيقة عن مؤهلاتهم ولديهم التراخيص اللازمة.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '5. Liability' : '5. المسؤولية'}</h2>
+            <p>${isEn ? 'The platform is not responsible for disputes between patients and doctors. We are a communication platform only and do not guarantee treatment outcomes.' : 'المنصة غير مسؤولة عن النزاعات بين المرضى والأطباء. نحن منصة تواصل فقط ولا نضمن نتائج أي علاج.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '6. Content' : '6. المحتوى'}</h2>
+            <p>${isEn ? 'Content must not contain illegal, offensive, or misleading material. We reserve the right to remove violating content.' : 'يجب ألا يحتوي المحتوى على مواد غير قانونية أو مضللة. نحتفظ بحق حذف أي محتوى مخالف.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '7. Payment' : '7. الدفع'}</h2>
+            <p>${isEn ? 'Offers are advisory. Payment is made directly between patient and doctor. The platform does not charge commissions currently.' : 'العروض إرشادية. الدفع يتم مباشرة بين المريض والطبيب. المنصة لا تتقاضى عمولات حالياً.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '8. Reviews' : '8. التقييمات'}</h2>
+            <p>${isEn ? 'Reviews must be honest. We reserve the right to remove abusive or misleading reviews.' : 'يجب أن تكون التقييمات صادقة. نحتفظ بحق حذف التقييمات المسيئة.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '9. Modifications' : '9. التعديلات'}</h2>
+            <p>${isEn ? 'We reserve the right to modify these terms at any time with user notification.' : 'نحتفظ بحق تعديل هذه الشروط في أي وقت مع إخطار المستخدمين.'}</p>
+
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '10. Governing Law' : '10. القانون المعمول به'}</h2>
+            <p>${isEn ? 'These terms are governed by applicable laws.' : 'تخضع هذه الشروط للقوانين المعمول بها.'}</p>
+
+            <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:16px;margin-top:24px">
+              <strong style="color:#92400e">⚠️ ${isEn ? 'Medical Disclaimer' : 'إخلاء مسؤولية طبية'}:</strong>
+              <p style="margin:8px 0 0;color:#92400e;font-size:0.95rem">${isEn ? 'This platform is for informational purposes only and does not provide medical advice. Consult your specialist before making any decisions. Hair transplant results vary by individual.' : 'هذه المنصة لأغراض إعلامية فقط ولا تقدم نصائح طبية. استشر طبيبك المختص قبل اتخاذ أي قرارات. نتائج زراعة الشعر تختلف من شخص لآخر.'}</p>
             </div>
           </div>
         </div>

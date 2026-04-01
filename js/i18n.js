@@ -189,6 +189,13 @@ const translations = {
       deleteRating: "حذف التقييم",
       moderation: "إدارة المحتوى"
     },
+    // Footer
+    footer: {
+      privacy: "سياسة الخصوصية",
+      terms: "شروط الاستخدام",
+      rights: "جميع الحقوق محفوظة",
+      disclaimer: "هذه المنصة لأغراض إعلامية فقط ولا تقدم نصائح طبية"
+    },
     // Messages
     messages: {
       title: "الرسائل",
@@ -434,6 +441,12 @@ const translations = {
       inactive: "Inactive",
       deleteRating: "Delete Rating",
       moderation: "Content Moderation"
+    },
+    footer: {
+      privacy: "Privacy Policy",
+      terms: "Terms of Use",
+      rights: "All rights reserved",
+      disclaimer: "This platform is for informational purposes only and does not provide medical advice"
     },
     messages: {
       title: "Messages",
