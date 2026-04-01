@@ -1,8 +1,10 @@
 {
+  "id": "hair-transplant-connect",
   "name": "Hair Transplant Connect - زراعة الشعر",
   "short_name": "HTC",
   "description": "منصة ربط مرضى زراعة الشعر بالأطباء المعتمدين - Connecting Hair Transplant Patients with Certified Doctors",
-  "start_url": "/index.html",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f8fafb",
   "theme_color": "#0d9488",
@@ -10,14 +12,24 @@
   "lang": "ar",
   "dir": "rtl",
   "icons": [
-    {
-      "src": "icons/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
+    { "src": "icons/icon-48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "icons/icon-72.png", "sizes": "72x72", "type": "image/png" },
+    { "src": "icons/icon-96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "icons/icon-128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "icons/icon-144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "icons/icon-152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "icons/icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "screenshots": [
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "form_factor": "narrow", "label": "Hair Transplant Connect - الصفحة الرئيسية" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "form_factor": "wide", "label": "Hair Transplant Connect - Landing Page" }
   ],
   "categories": ["health", "medical", "lifestyle"],
-  "screenshots": [],
   "prefer_related_applications": false
 }

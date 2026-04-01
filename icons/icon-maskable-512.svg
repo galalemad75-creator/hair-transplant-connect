@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d9488"/>
+      <stop offset="100%" style="stop-color:#059669"/>
+    </linearGradient>
+    <linearGradient id="hair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34d399"/>
+      <stop offset="100%" style="stop-color:#6ee7b7"/>
+    </linearGradient>
+  </defs>
+  <!-- Full bleed background for maskable -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Head/Scalp - centered with safe zone padding -->
+  <circle cx="256" cy="220" r="90" fill="none" stroke="white" stroke-width="7" opacity="0.9"/>
+  <!-- Hair lines -->
+  <path d="M210 155 Q228 128 256 120 Q284 128 302 155" fill="none" stroke="url(#hair)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M200 172 Q218 140 256 128 Q294 140 312 172" fill="none" stroke="url(#hair)" stroke-width="4.5" stroke-linecap="round" opacity="0.8"/>
+  <!-- Hair strands -->
+  <line x1="242" y1="126" x2="238" y2="110" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="120" x2="256" y2="102" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+  <line x1="270" y1="126" x2="274" y2="110" stroke="#6ee7b7" stroke-width="3" stroke-linecap="round"/>
+  <!-- Cross/Medical -->
+  <rect x="242" y="290" width="28" height="65" rx="4" fill="white" opacity="0.9"/>
+  <rect x="223" y="309" width="66" height="28" rx="4" fill="white" opacity="0.9"/>
+  <!-- Sparkle -->
+  <circle cx="370" cy="130" r="5" fill="#fbbf24"/>
+</svg>

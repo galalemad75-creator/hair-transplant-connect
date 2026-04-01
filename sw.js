@@ -1,8 +1,12 @@
-// Hair Transplant Connect — Service Worker v4
-// Force clear ALL old caches and never cache
-var CACHE_NAME = 'htc-v4';
+// Hair Transplant Connect — Service Worker v5
+var CACHE_NAME = 'htc-v5';
 
 self.addEventListener('install', function(event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.add('./offline.html');
+    })
+  );
   self.skipWaiting();
 });
 
@@ -10,7 +14,8 @@ self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys().then(function(names) {
       return Promise.all(
-        names.map(function(name) { return caches.delete(name); })
+        names.filter(function(name) { return name !== CACHE_NAME; })
+             .map(function(name) { return caches.delete(name); })
       );
     }).then(function() {
       return self.clients.claim();
@@ -19,12 +24,15 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  // Always fetch from network, never from cache
+  if (event.request.method !== 'GET') return;
   event.respondWith(
-    fetch(event.request).then(function(response) {
-      return response;
-    }).catch(function() {
-      return caches.match(event.request);
+    fetch(event.request).catch(function() {
+      return caches.match(event.request).then(function(response) {
+        if (response) return response;
+        if (event.request.mode === 'navigate') {
+          return caches.match('./offline.html');
+        }
+      });
     })
   );
 });

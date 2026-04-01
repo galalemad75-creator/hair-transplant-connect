@@ -507,7 +507,8 @@
       return;
     }
 
-    const user = data.users.find(u => u.email === email && u.password === password && u.type === type);
+    const hashedInput = simpleHash(password);
+    const user = data.users.find(u => u.email === email && u.password === hashedInput && u.type === type);
     if (user) {
       if (!user.active) {
         showToast(t('admin.inactive'), 'error');
@@ -615,7 +616,7 @@
     const data = loadData();
     const user = data.users.find(u => u.email === window._resetEmail);
     if (user) {
-      user.password = pass;
+      user.password = simpleHash(pass);
       saveData(data);
       showToast(t('login.resetSuccess'), 'success');
       window._resetStep = 1;
@@ -841,7 +842,7 @@
       name,
       name_en: name,
       email,
-      password,
+      password: simpleHash(password),
       phone,
       country: countryVal,
       country_en: countryVal,
