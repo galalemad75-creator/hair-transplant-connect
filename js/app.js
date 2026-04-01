@@ -50,14 +50,14 @@
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.body.className = lang === 'ar' ? 'rtl' : 'ltr';
 
-    // Update font
+    // Update font (graceful — works without Google Fonts too)
     const link = document.getElementById('fontLink');
-    if (lang === 'ar') {
-      link.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap';
-      document.body.style.fontFamily = "'Cairo', sans-serif";
-    } else {
-      link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
-      document.body.style.fontFamily = "'Inter', sans-serif";
+    if (link) {
+      if (lang === 'ar') {
+        link.href = 'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap';
+      } else {
+        link.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
+      }
     }
 
     // Update all text
