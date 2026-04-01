@@ -1,5 +1,5 @@
 // Hair Transplant Connect — Service Worker v2
-var CACHE_NAME = 'htc-v2';
+var CACHE_NAME = 'htc-v3-redesign';
 
 self.addEventListener('install', function(event) {
   self.skipWaiting();
