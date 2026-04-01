@@ -6,6 +6,7 @@ const translations = {
     appSlogan: "منصة ربط مرضى زراعة الشعر بالأطباء",
     nav: {
       home: "الرئيسية",
+      about: "من نحن",
       login: "تسجيل الدخول",
       register: "إنشاء حساب",
       dashboard: "لوحة التحكم",
@@ -256,6 +257,7 @@ const translations = {
     appSlogan: "Connecting Hair Transplant Patients with Doctors",
     nav: {
       home: "Home",
+      about: "About Us",
       login: "Login",
       register: "Register",
       dashboard: "Dashboard",
