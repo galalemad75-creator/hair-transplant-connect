@@ -57,7 +57,20 @@ const translations = {
       password: "كلمة المرور",
       btn: "دخول",
       noAccount: "ليس لديك حساب؟",
-      signUp: "سجّل الآن"
+      signUp: "سجّل الآن",
+      forgotPassword: "نسيت كلمة المرور؟",
+      forgotTitle: "استعادة كلمة المرور",
+      forgotDesc: "أدخل بريدك الإلكتروني وسنرسل لك رمز إعادة التعيين",
+      sendReset: "إرسال رمز الاستعادة",
+      resetSent: "تم إرسال رمز الاستعادة إلى بريدك الإلكتروني",
+      resetNewPass: "كلمة المرور الجديدة",
+      resetConfirmPass: "تأكيد كلمة المرور الجديدة",
+      resetBtn: "تعيين كلمة المرور",
+      resetSuccess: "تم تغيير كلمة المرور بنجاح! يمكنك تسجيل الدخول الآن",
+      resetCode: "رمز التحقق",
+      resetVerify: "تحقق من الرمز",
+      invalidCode: "رمز التحقق غير صحيح",
+      noEmailFound: "البريد الإلكتروني غير مسجل"
     },
     register: {
       patientTitle: "تسجيل حساب مريض",
@@ -292,7 +305,20 @@ const translations = {
       password: "Password",
       btn: "Login",
       noAccount: "Don't have an account?",
-      signUp: "Sign Up"
+      signUp: "Sign Up",
+      forgotPassword: "Forgot Password?",
+      forgotTitle: "Reset Password",
+      forgotDesc: "Enter your email and we'll send you a reset code",
+      sendReset: "Send Reset Code",
+      resetSent: "Reset code sent to your email",
+      resetNewPass: "New Password",
+      resetConfirmPass: "Confirm New Password",
+      resetBtn: "Set Password",
+      resetSuccess: "Password changed successfully! You can now login",
+      resetCode: "Verification Code",
+      resetVerify: "Verify Code",
+      invalidCode: "Invalid verification code",
+      noEmailFound: "Email not found"
     },
     register: {
       patientTitle: "Patient Registration",

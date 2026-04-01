@@ -153,6 +153,7 @@
     // Public routes
     if (route === '/') { renderLanding(); matched = true; }
     else if (route === '/login') { renderLogin(); matched = true; }
+    else if (route === '/forgot-password') { renderForgotPassword(); matched = true; }
     else if (route === '/register/patient') { renderRegister('patient'); matched = true; }
     else if (route === '/register/doctor') { renderRegister('doctor'); matched = true; }
 
@@ -295,6 +296,7 @@
               </div>
               <button type="submit" class="btn btn-primary btn-block">${t('login.btn')}</button>
             </form>
+            <p class="auth-footer"><a href="#/forgot-password" style="color:#e74c3c;font-weight:600">${t('login.forgotPassword')}</a></p>
             <p class="auth-footer">${t('login.noAccount')} <a href="#/register/patient">${t('login.signUp')}</a></p>
           </div>
         </div>
@@ -347,6 +349,109 @@
       updateNav();
     } else {
       showToast(t('toast.loginError'), 'error');
+    }
+  };
+
+  // ====== FORGOT PASSWORD ======
+  function renderForgotPassword() {
+    const app = document.getElementById('app');
+    // Store a simulated reset code in sessionStorage
+    window._resetStep = window._resetStep || 1;
+    window._resetEmail = window._resetEmail || '';
+
+    app.innerHTML = `
+      <div class="container">
+        <div class="auth-page">
+          <div class="auth-card">
+            <h2>🔒 ${t('login.forgotTitle')}</h2>
+            <div id="forgotStep1">
+              <p style="text-align:center;color:#6b7280;margin-bottom:20px">${t('login.forgotDesc')}</p>
+              <form onsubmit="handleForgotStep1(event)">
+                <div class="form-group">
+                  <label>${t('login.email')}</label>
+                  <input type="email" id="forgotEmail" required class="form-control" placeholder="email@example.com">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">${t('login.sendReset')}</button>
+              </form>
+            </div>
+            <div id="forgotStep2" style="display:none">
+              <p style="text-align:center;color:#6b7280;margin-bottom:20px">${t('login.resetSent')}</p>
+              <form onsubmit="handleForgotStep2(event)">
+                <div class="form-group">
+                  <label>${t('login.resetCode')}</label>
+                  <input type="text" id="resetCodeInput" required class="form-control" placeholder="123456" maxlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">${t('login.resetVerify')}</button>
+              </form>
+            </div>
+            <div id="forgotStep3" style="display:none">
+              <form onsubmit="handleForgotStep3(event)">
+                <div class="form-group">
+                  <label>${t('login.resetNewPass')}</label>
+                  <input type="password" id="newPassword" required class="form-control" minlength="6">
+                </div>
+                <div class="form-group">
+                  <label>${t('login.resetConfirmPass')}</label>
+                  <input type="password" id="confirmNewPassword" required class="form-control" minlength="6">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">${t('login.resetBtn')}</button>
+              </form>
+            </div>
+            <p class="auth-footer"><a href="#/login">${t('common.back')}</a></p>
+          </div>
+        </div>
+      </div>
+    `;
+    window._resetStep = 1;
+    window._resetEmail = '';
+  }
+
+  window.handleForgotStep1 = function(e) {
+    e.preventDefault();
+    const email = document.getElementById('forgotEmail').value;
+    const data = loadData();
+    const user = data.users.find(u => u.email === email);
+    if (!user) {
+      showToast(t('login.noEmailFound'), 'error');
+      return;
+    }
+    window._resetEmail = email;
+    // Simulate sending a code (always "123456" for demo)
+    window._resetCode = '123456';
+    document.getElementById('forgotStep1').style.display = 'none';
+    document.getElementById('forgotStep2').style.display = '';
+    showToast(t('login.resetSent'), 'success');
+  };
+
+  window.handleForgotStep2 = function(e) {
+    e.preventDefault();
+    const code = document.getElementById('resetCodeInput').value;
+    if (code !== window._resetCode) {
+      showToast(t('login.invalidCode'), 'error');
+      return;
+    }
+    document.getElementById('forgotStep2').style.display = 'none';
+    document.getElementById('forgotStep3').style.display = '';
+  };
+
+  window.handleForgotStep3 = function(e) {
+    e.preventDefault();
+    const pass = document.getElementById('newPassword').value;
+    const confirm = document.getElementById('confirmNewPassword').value;
+    if (pass !== confirm) {
+      showToast('كلمات المرور غير متطابقة / Passwords do not match', 'error');
+      return;
+    }
+    const data = loadData();
+    const user = data.users.find(u => u.email === window._resetEmail);
+    if (user) {
+      user.password = pass;
+      saveData(data);
+      showToast(t('login.resetSuccess'), 'success');
+      window._resetStep = 1;
+      window._resetEmail = '';
+      window._resetCode = '';
+      setTimeout(() => { location.hash = '#/login'; }, 1500);
     }
   };
 
