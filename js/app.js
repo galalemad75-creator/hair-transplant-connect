@@ -25,6 +25,10 @@
     // Language toggle
     document.getElementById('langToggle').addEventListener('click', toggleLanguage);
 
+    // Dark/Light theme toggle
+    initTheme();
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
     // Navigation
     document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
 
@@ -73,6 +77,32 @@
     handleRoute();
   }
 
+  // ====== THEME (DARK/LIGHT) ======
+  function initTheme() {
+    const saved = localStorage.getItem('htc_theme') || 'light';
+    applyTheme(saved);
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    const sunIcon = document.querySelector('.icon-sun');
+    const moonIcon = document.querySelector('.icon-moon');
+    if (theme === 'dark') {
+      if (sunIcon) sunIcon.style.display = 'none';
+      if (moonIcon) moonIcon.style.display = '';
+    } else {
+      if (sunIcon) sunIcon.style.display = '';
+      if (moonIcon) moonIcon.style.display = 'none';
+    }
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('htc_theme', next);
+    applyTheme(next);
+  }
+
   function updateTexts() {
     document.querySelectorAll('[data-t]').forEach(el => {
       el.textContent = t(el.dataset.t);
@@ -103,6 +133,7 @@
         html += `<a href="#/admin/cases">${t('nav.cases')}</a>`;
       }
     } else {
+      html += `<a href="#/about">${t('nav.about') || 'من نحن'}</a>`;
       html += `<a href="#/login">${t('nav.login')}</a>`;
       html += `<a href="#/register/patient">${t('nav.register')}</a>`;
     }
@@ -154,6 +185,7 @@
     if (route === '/') { renderLanding(); matched = true; }
     else if (route === '/login') { renderLogin(); matched = true; }
     else if (route === '/forgot-password') { renderForgotPassword(); matched = true; }
+    else if (route === '/about') { renderAbout(); matched = true; }
     else if (route === '/register/patient') { renderRegister('patient'); matched = true; }
     else if (route === '/register/doctor') { renderRegister('doctor'); matched = true; }
 
@@ -453,12 +485,16 @@
     const data = loadData();
 
     if (type === 'admin') {
-      if (email === 'admin@htc.com' && password === 'admin123') {
+      if (email === 'emadh5156@gmail.com' && password === 'admin75') {
         // Ensure admin exists
         let admin = data.users.find(u => u.type === 'admin');
         if (!admin) {
-          admin = { id: 'admin', type: 'admin', name: 'المدير', name_en: 'Admin', email: 'admin@htc.com', password: 'admin123', active: true };
+          admin = { id: 'admin', type: 'admin', name: 'المدير', name_en: 'Admin', email: 'emadh5156@gmail.com', password: 'admin75', active: true };
           data.users.push(admin);
+          saveData(data);
+        } else {
+          admin.email = 'emadh5156@gmail.com';
+          admin.password = 'admin75';
           saveData(data);
         }
         localStorage.setItem('htc_currentUser', admin.id);
@@ -588,6 +624,93 @@
       setTimeout(() => { location.hash = '#/login'; }, 1500);
     }
   };
+
+  // ====== ABOUT US ======
+  function renderAbout() {
+    const app = document.getElementById('app');
+    app.innerHTML = `
+      <div class="container">
+        <div class="about-page">
+          <div class="about-hero">
+            <span class="section-badge">✨ من نحن</span>
+            <h1>Hair Transplant Connect</h1>
+            <p class="about-subtitle">منصة رائدة في مجال زراعة الشعر تربط المرضى بأفضل الأطباء المعتمدين حول العالم</p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <div class="about-card-icon">🎯</div>
+              <h3>رؤيتنا</h3>
+              <p>أن نكون المنصة الأولى عالمياً في مجال زراعة الشعر، نوفّر تجربة آمنة وشفافة لكل مريض يبحث عن الحل الأمثل.</p>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">💡</div>
+              <h3>رسالتنا</h3>
+              <p>تسهيل وصول المرضى لأفضل الأطباء المتخصصين في زراعة الشعر مع ضمان الجودة والأسعار الشفافة والمتابعة المستمرة.</p>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🌟</div>
+              <h3>قيمنا</h3>
+              <p>الشفافية، الأمانة، الجودة، والابتكار. نؤمن بأن كل شخص يستحق الحصول على شعر صحي وثقة بالنفس.</p>
+            </div>
+          </div>
+
+          <div class="about-stats">
+            <h2>إنجازاتنا بالأرقام</h2>
+            <div class="stats-grid">
+              <div class="stat-card"><div class="stat-number">2,500+</div><div class="stat-label">مريض سعيد</div></div>
+              <div class="stat-card"><div class="stat-number">150+</div><div class="stat-label">طبيب معتمد</div></div>
+              <div class="stat-card"><div class="stat-number">5,000+</div><div class="stat-label">عملية ناجحة</div></div>
+              <div class="stat-card"><div class="stat-number">12+</div><div class="stat-label">دولة</div></div>
+            </div>
+          </div>
+
+          <div class="about-why">
+            <h2>لماذا تختارنا؟</h2>
+            <div class="about-features">
+              <div class="about-feature">
+                <span class="about-feature-icon">✅</span>
+                <div>
+                  <h4>أطباء معتمدون فقط</h4>
+                  <p>جميع أطباءنا معتمدون ولديهم خبرة واسعة في مجال زراعة الشعر</p>
+                </div>
+              </div>
+              <div class="about-feature">
+                <span class="about-feature-icon">💰</span>
+                <div>
+                  <h4>أسعار شفافة</h4>
+                  <p>لا توجد تكاليف خفية — تعرف على السعر النهائي قبل اتخاذ القرار</p>
+                </div>
+              </div>
+              <div class="about-feature">
+                <span class="about-feature-icon">🔒</span>
+                <div>
+                  <h4>خصوصية تامة</h4>
+                  <p>بياناتك الطبية محمية بأعلى معايير الأمان والخصوصية</p>
+                </div>
+              </div>
+              <div class="about-feature">
+                <span class="about-feature-icon">📞</span>
+                <div>
+                  <h4>متابعة مستمرة</h4>
+                  <p>فريق دعم متاح على مدار الساعة لمساعدتك في كل خطوة</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-cta">
+            <h2>هل أنت مستعد لبدء رحلتك؟</h2>
+            <p>انضم إلى آلاف المرضى الذين وجدوا الحل المناسب</p>
+            <div class="hero-ctas">
+              <a href="#/register/patient" class="btn btn-accent btn-lg">سجّل كمريض</a>
+              <a href="#/register/doctor" class="btn btn-outline btn-lg">انضم كطبيب</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
 
   // ====== REGISTER ======
   function renderRegister(type) {
