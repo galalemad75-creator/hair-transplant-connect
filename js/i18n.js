@@ -248,6 +248,45 @@ const translations = {
       privacy: "سياسة الخصوصية",
       terms: "شروط الاستخدام"
     },
+    // About page
+    about: {
+      badge: "من نحن",
+      subtitle: "منصة رائدة في مجال زراعة الشعر تربط المرضى بأفضل الأطباء المعتمدين حول العالم",
+      vision: "رؤيتنا",
+      visionDesc: "أن نكون المنصة الأولى عالمياً في مجال زراعة الشعر، نوفّر تجربة آمنة وشفافة لكل مريض يبحث عن الحل الأمثل.",
+      mission: "رسالتنا",
+      missionDesc: "تسهيل وصول المرضى لأفضل الأطباء المتخصصين في زراعة الشعر مع ضمان الجودة والأسعار الشفافة والمتابعة المستمرة.",
+      values: "قيمنا",
+      valuesDesc: "الشفافية، الأمانة، الجودة، والابتكار. نؤمن بأن كل شخص يستحق الحصول على شعر صحي وثقة بالنفس.",
+      achievements: "إنجازاتنا بالأرقام",
+      happyPatients: "مريض سعيد",
+      certifiedDoctors: "طبيب معتمد",
+      successfulOps: "عملية ناجحة",
+      whyChoose: "لماذا تختارنا؟",
+      certifiedOnly: "أطباء معتمدون فقط",
+      certifiedOnlyDesc: "جميع أطباءنا معتمدون ولديهم خبرة واسعة في مجال زراعة الشعر",
+      transparentPricing: "أسعار شفافة",
+      transparentPricingDesc: "لا توجد تكاليف خفية — تعرف على السعر النهائي قبل اتخاذ القرار",
+      fullPrivacy: "خصوصية تامة",
+      fullPrivacyDesc: "بياناتك الطبية محمية بأعلى معايير الأمان والخصوصية",
+      support247: "متابعة مستمرة",
+      support247Desc: "فريق دعم متاح على مدار الساعة لمساعدتك في كل خطوة",
+      readyStart: "هل أنت مستعد لبدء رحلتك؟",
+      joinThousands: "انضم إلى آلاف المرضى الذين وجدوا الحل المناسب",
+      registerPatient: "سجّل كمريض",
+      joinDoctor: "انضم كطبيب"
+    },
+    // Landing badges & misc
+    landing: {
+      trustedBadge: "منصة موثوقة ومعتمدة",
+      whyUsBadge: "لماذا نحن",
+      statsBadge: "إحصائيات",
+      reviewsBadge: "آراء المرضى",
+      verifiedPatient: "مريض موثق",
+      featuresSub: "نقدم لك تجربة متكاملة للحصول على أفضل خدمة زراعة شعر",
+      notFound: "الصفحة غير موجودة",
+      home: "الرئيسية"
+    },
     // Toast
     toast: {
       loginSuccess: "تم تسجيل الدخول بنجاح",
@@ -493,6 +532,45 @@ const translations = {
       rights: "All Rights Reserved",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
+    },
+    // About page
+    about: {
+      badge: "About Us",
+      subtitle: "A leading platform in hair transplant connecting patients with the best certified doctors worldwide",
+      vision: "Our Vision",
+      visionDesc: "To be the world's leading hair transplant platform, providing a safe and transparent experience for every patient seeking the best solution.",
+      mission: "Our Mission",
+      missionDesc: "Facilitating patient access to the best hair transplant specialists with guaranteed quality, transparent pricing, and ongoing follow-up.",
+      values: "Our Values",
+      valuesDesc: "Transparency, honesty, quality, and innovation. We believe everyone deserves healthy hair and self-confidence.",
+      achievements: "Our Achievements",
+      happyPatients: "Happy Patients",
+      certifiedDoctors: "Certified Doctors",
+      successfulOps: "Successful Operations",
+      whyChoose: "Why Choose Us?",
+      certifiedOnly: "Certified Doctors Only",
+      certifiedOnlyDesc: "All our doctors are certified with extensive experience in hair transplant",
+      transparentPricing: "Transparent Pricing",
+      transparentPricingDesc: "No hidden costs — know the final price before making your decision",
+      fullPrivacy: "Full Privacy",
+      fullPrivacyDesc: "Your medical data is protected with the highest security and privacy standards",
+      support247: "24/7 Support",
+      support247Desc: "Support team available around the clock to help you every step of the way",
+      readyStart: "Ready to Start Your Journey?",
+      joinThousands: "Join thousands of patients who found the right solution",
+      registerPatient: "Register as Patient",
+      joinDoctor: "Join as Doctor"
+    },
+    // Landing badges & misc
+    landing: {
+      trustedBadge: "Trusted & Certified Platform",
+      whyUsBadge: "Why Us",
+      statsBadge: "Statistics",
+      reviewsBadge: "What Our Patients Say",
+      verifiedPatient: "Verified Patient",
+      featuresSub: "We provide a complete experience to get the best hair transplant service",
+      notFound: "Page not found",
+      home: "Home"
     },
     toast: {
       loginSuccess: "Logged in successfully",

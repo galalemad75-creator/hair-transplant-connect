@@ -211,7 +211,7 @@
     else if (route === '/admin/cases') { renderAdminCases(); matched = true; }
 
     if (!matched) {
-      app.innerHTML = `<div class="container"><div class="empty-state"><h2>404</h2><p>الصفحة غير موجودة</p><a href="#/" class="btn btn-primary">الرئيسية</a></div></div>`;
+      app.innerHTML = `<div class="container"><div class="empty-state"><h2>404</h2><p>${t('landing.notFound')}</p><a href="#/" class="btn btn-primary">${t('landing.home')}</a></div></div>`;
     }
 
     window.scrollTo(0, 0);
@@ -319,8 +319,8 @@
         </div>
 
         <div class="hero-content">
-          <span class="hero-badge">✨ منصة موثوقة ومعتمدة</span>
-          <h1 class="hero-title">${t('hero.title').replace('شعر صحي', '<span class="gradient-text">شعر صحي</span>')}</h1>
+          <span class="hero-badge">✨ ${t('landing.trustedBadge')}</span>
+          <h1 class="hero-title">${(() => { const lang = localStorage.getItem('lang') || 'ar'; const txt = t('hero.title'); return lang === 'en' ? txt.replace('Healthy Hair', '<span class="gradient-text">Healthy Hair</span>') : txt.replace('شعر صحي', '<span class="gradient-text">شعر صحي</span>'); })()}</h1>
           <p class="hero-subtitle">${t('hero.subtitle')}</p>
           <div class="hero-ctas">
             <a href="#/register/patient" class="btn btn-accent btn-lg pulse-btn">${t('hero.cta')}</a>
@@ -339,9 +339,9 @@
 
       <section class="section section-dark" id="features">
         <div class="section-header light">
-          <span class="section-badge">🏥 لماذا نحن</span>
+          <span class="section-badge">🏥 ${t('landing.whyUsBadge')}</span>
           <h2 class="section-title">${t('features.title')}</h2>
-          <p class="section-sub">نقدم لك تجربة متكاملة للحصول على أفضل خدمة زراعة شعر</p>
+          <p class="section-sub">${t('landing.featuresSub')}</p>
         </div>
         <div class="features-grid">
           ${['f1','f2','f3','f4','f5','f6'].map((f,i) => `
@@ -356,7 +356,7 @@
 
       <section class="stats-section section-gradient">
         <div class="section-header">
-          <span class="section-badge">📊 إحصائيات</span>
+          <span class="section-badge">📊 ${t('landing.statsBadge')}</span>
           <h2 class="section-title">${t('stats.title')}</h2>
         </div>
         <div class="stats-grid">
@@ -381,7 +381,7 @@
 
       <section class="section">
         <div class="section-header">
-          <span class="section-badge">💬 آراء المرضى</span>
+          <span class="section-badge">💬 ${t('landing.reviewsBadge')}</span>
           <h2 class="section-title">${t('testimonials.title')}</h2>
         </div>
         <div class="testimonial-grid">
@@ -397,7 +397,7 @@
                 <div class="test-avatar">${t2.name.charAt(0)}</div>
                 <div class="test-author">
                   <strong>${t2.name}</strong>
-                  <small>مريض موثق</small>
+                  <small>${t('landing.verifiedPatient')}</small>
                 </div>
               </div>
             </div>
@@ -630,86 +630,84 @@
 
   // ====== ABOUT US ======
   function renderAbout() {
-    const lang = localStorage.getItem('lang') || 'ar';
     const app = document.getElementById('app');
-    const isEn = lang === 'en';
     app.innerHTML = `
       <div class="container">
         <div class="about-page">
           <div class="about-hero">
-            <span class="section-badge">✨ ${isEn ? 'About Us' : 'من نحن'}</span>
+            <span class="section-badge">✨ ${t('about.badge')}</span>
             <h1>Hair Transplant Connect</h1>
-            <p class="about-subtitle">${isEn ? 'A leading platform in hair transplant connecting patients with the best certified doctors worldwide' : 'منصة رائدة في مجال زراعة الشعر تربط المرضى بأفضل الأطباء المعتمدين حول العالم'}</p>
+            <p class="about-subtitle">${t('about.subtitle')}</p>
           </div>
 
           <div class="about-grid">
             <div class="about-card">
               <div class="about-card-icon">🎯</div>
-              <h3>${isEn ? 'Our Vision' : 'رؤيتنا'}</h3>
-              <p>${isEn ? 'To be the world\'s leading hair transplant platform, providing a safe and transparent experience for every patient seeking the best solution.' : 'أن نكون المنصة الأولى عالمياً في مجال زراعة الشعر، نوفّر تجربة آمنة وشفافة لكل مريض يبحث عن الحل الأمثل.'}</p>
+              <h3>${t('about.vision')}</h3>
+              <p>${t('about.visionDesc')}</p>
             </div>
             <div class="about-card">
               <div class="about-card-icon">💡</div>
-              <h3>${isEn ? 'Our Mission' : 'رسالتنا'}</h3>
-              <p>${isEn ? 'Facilitating patient access to the best hair transplant specialists with guaranteed quality, transparent pricing, and ongoing follow-up.' : 'تسهيل وصول المرضى لأفضل الأطباء المتخصصين في زراعة الشعر مع ضمان الجودة والأسعار الشفافة والمتابعة المستمرة.'}</p>
+              <h3>${t('about.mission')}</h3>
+              <p>${t('about.missionDesc')}</p>
             </div>
             <div class="about-card">
               <div class="about-card-icon">🌟</div>
-              <h3>${isEn ? 'Our Values' : 'قيمنا'}</h3>
-              <p>${isEn ? 'Transparency, honesty, quality, and innovation. We believe everyone deserves healthy hair and self-confidence.' : 'الشفافية، الأمانة، الجودة، والابتكار. نؤمن بأن كل شخص يستحق الحصول على شعر صحي وثقة بالنفس.'}</p>
+              <h3>${t('about.values')}</h3>
+              <p>${t('about.valuesDesc')}</p>
             </div>
           </div>
 
           <div class="about-stats">
-            <h2>${isEn ? 'Our Achievements' : 'إنجازاتنا بالأرقام'}</h2>
+            <h2>${t('about.achievements')}</h2>
             <div class="stats-grid">
-              <div class="stat-card"><div class="stat-number">2,500+</div><div class="stat-label">${isEn ? 'Happy Patients' : 'مريض سعيد'}</div></div>
-              <div class="stat-card"><div class="stat-number">150+</div><div class="stat-label">${isEn ? 'Certified Doctors' : 'طبيب معتمد'}</div></div>
-              <div class="stat-card"><div class="stat-number">5,000+</div><div class="stat-label">${isEn ? 'Successful Operations' : 'عملية ناجحة'}</div></div>
-              <div class="stat-card"><div class="stat-number">12+</div><div class="stat-label">${isEn ? 'Countries' : 'دولة'}</div></div>
+              <div class="stat-card"><div class="stat-number">2,500+</div><div class="stat-label">${t('about.happyPatients')}</div></div>
+              <div class="stat-card"><div class="stat-number">150+</div><div class="stat-label">${t('about.certifiedDoctors')}</div></div>
+              <div class="stat-card"><div class="stat-number">5,000+</div><div class="stat-label">${t('about.successfulOps')}</div></div>
+              <div class="stat-card"><div class="stat-number">12+</div><div class="stat-label">${t('stats.countries')}</div></div>
             </div>
           </div>
 
           <div class="about-why">
-            <h2>${isEn ? 'Why Choose Us?' : 'لماذا تختارنا؟'}</h2>
+            <h2>${t('about.whyChoose')}</h2>
             <div class="about-features">
               <div class="about-feature">
                 <span class="about-feature-icon">✅</span>
                 <div>
-                  <h4>${isEn ? 'Certified Doctors Only' : 'أطباء معتمدون فقط'}</h4>
-                  <p>${isEn ? 'All our doctors are certified with extensive experience in hair transplant' : 'جميع أطباءنا معتمدون ولديهم خبرة واسعة في مجال زراعة الشعر'}</p>
+                  <h4>${t('about.certifiedOnly')}</h4>
+                  <p>${t('about.certifiedOnlyDesc')}</p>
                 </div>
               </div>
               <div class="about-feature">
                 <span class="about-feature-icon">💰</span>
                 <div>
-                  <h4>${isEn ? 'Transparent Pricing' : 'أسعار شفافة'}</h4>
-                  <p>${isEn ? 'No hidden costs — know the final price before making your decision' : 'لا توجد تكاليف خفية — تعرف على السعر النهائي قبل اتخاذ القرار'}</p>
+                  <h4>${t('about.transparentPricing')}</h4>
+                  <p>${t('about.transparentPricingDesc')}</p>
                 </div>
               </div>
               <div class="about-feature">
                 <span class="about-feature-icon">🔒</span>
                 <div>
-                  <h4>${isEn ? 'Full Privacy' : 'خصوصية تامة'}</h4>
-                  <p>${isEn ? 'Your medical data is protected with the highest security and privacy standards' : 'بياناتك الطبية محمية بأعلى معايير الأمان والخصوصية'}</p>
+                  <h4>${t('about.fullPrivacy')}</h4>
+                  <p>${t('about.fullPrivacyDesc')}</p>
                 </div>
               </div>
               <div class="about-feature">
                 <span class="about-feature-icon">📞</span>
                 <div>
-                  <h4>${isEn ? '24/7 Support' : 'متابعة مستمرة'}</h4>
-                  <p>${isEn ? 'Support team available around the clock to help you every step of the way' : 'فريق دعم متاح على مدار الساعة لمساعدتك في كل خطوة'}</p>
+                  <h4>${t('about.support247')}</h4>
+                  <p>${t('about.support247Desc')}</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="about-cta">
-            <h2>${isEn ? 'Ready to Start Your Journey?' : 'هل أنت مستعد لبدء رحلتك؟'}</h2>
-            <p>${isEn ? 'Join thousands of patients who found the right solution' : 'انضم إلى آلاف المرضى الذين وجدوا الحل المناسب'}</p>
+            <h2>${t('about.readyStart')}</h2>
+            <p>${t('about.joinThousands')}</p>
             <div class="hero-ctas">
-              <a href="#/register/patient" class="btn btn-accent btn-lg">${isEn ? 'Register as Patient' : 'سجّل كمريض'}</a>
-              <a href="#/register/doctor" class="btn btn-outline btn-lg">${isEn ? 'Join as Doctor' : 'انضم كطبيب'}</a>
+              <a href="#/register/patient" class="btn btn-accent btn-lg">${t('about.registerPatient')}</a>
+              <a href="#/register/doctor" class="btn btn-outline btn-lg">${t('about.joinDoctor')}</a>
             </div>
           </div>
         </div>
@@ -1896,7 +1894,7 @@
   }
 
   function toggleNotifications() {
-    showToast('لا توجد إشعارات جديدة / No new notifications', 'info');
+    showToast(t('common.noResults') + ' / No new notifications', 'info');
   }
 
   // ====== TOAST ======
