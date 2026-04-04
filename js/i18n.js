@@ -193,6 +193,8 @@ const translations = {
     footer: {
       privacy: "سياسة الخصوصية",
       terms: "شروط الاستخدام",
+      refund: "سياسة الاسترجاع",
+      contact: "تواصل معنا",
       rights: "جميع الحقوق محفوظة",
       disclaimer: "هذه المنصة لأغراض إعلامية فقط ولا تقدم نصائح طبية"
     },
@@ -484,6 +486,8 @@ const translations = {
     footer: {
       privacy: "Privacy Policy",
       terms: "Terms of Use",
+      refund: "Refund Policy",
+      contact: "Contact Us",
       rights: "All rights reserved",
       disclaimer: "This platform is for informational purposes only and does not provide medical advice"
     },

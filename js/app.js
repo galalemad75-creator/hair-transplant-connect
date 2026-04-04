@@ -188,6 +188,8 @@
     else if (route === '/about') { renderAbout(); matched = true; }
     else if (route === '/privacy') { renderPrivacy(); matched = true; }
     else if (route === '/terms') { renderTerms(); matched = true; }
+    else if (route === '/refund') { renderRefund(); matched = true; }
+    else if (route === '/contact') { renderContact(); matched = true; }
     else if (route === '/register/patient') { renderRegister('patient'); matched = true; }
     else if (route === '/register/doctor') { renderRegister('doctor'); matched = true; }
 
@@ -710,6 +712,12 @@
               <a href="#/register/doctor" class="btn btn-outline btn-lg">${t('about.joinDoctor')}</a>
             </div>
           </div>
+          <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;">
+            <a href="#/privacy" style="color:var(--primary);font-weight:700">🔒 ${isEn ? 'Privacy Policy' : 'سياسة الخصوصية'}</a>
+            <a href="#/terms" style="color:var(--primary);font-weight:700">📄 ${isEn ? 'Terms of Service' : 'شروط الاستخدام'}</a>
+            <a href="#/refund" style="color:var(--primary);font-weight:700">💰 ${isEn ? 'Refund Policy' : 'سياسة الاسترجاع'}</a>
+            <a href="#/contact" style="color:var(--primary);font-weight:700">📬 ${isEn ? 'Contact Us' : 'تواصل معنا'}</a>
+          </div>
         </div>
       </div>
     `;
@@ -720,40 +728,45 @@
     const lang = localStorage.getItem('lang') || 'ar';
     const app = document.getElementById('app');
     const isEn = lang === 'en';
+    const crossLinks = `<div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;"><a href="#/terms" style="color:var(--primary);font-weight:700">📄 ${isEn ? 'Terms of Service' : 'شروط الاستخدام'}</a><a href="#/refund" style="color:var(--primary);font-weight:700">💰 ${isEn ? 'Refund Policy' : 'سياسة الاسترجاع'}</a><a href="#/contact" style="color:var(--primary);font-weight:700">📬 ${isEn ? 'Contact Us' : 'تواصل معنا'}</a><a href="#/about" style="color:var(--primary);font-weight:700">ℹ️ ${isEn ? 'About Us' : 'من نحن'}</a></div>`;
     app.innerHTML = `
       <div class="container">
         <div class="about-page">
           <div class="about-hero">
-            <h1>${isEn ? 'Privacy Policy' : 'سياسة الخصوصية'}</h1>
+            <h1>${isEn ? '🔒 Privacy Policy' : '🔒 سياسة الخصوصية'}</h1>
             <p class="about-subtitle">${isEn ? 'Last updated: April 2026' : 'آخر تحديث: أبريل 2026'}</p>
           </div>
           <div style="background:var(--bg-card);padding:32px;border-radius:14px;box-shadow:var(--shadow-md);line-height:2;color:var(--text)">
             <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '1. Information We Collect' : '1. جمع المعلومات'}</h2>
-            <p>${isEn ? 'We collect information you provide when registering, including your name, email address, phone number, and medical photos. This information is necessary to connect patients with certified hair transplant doctors.' : 'نقوم بجمع المعلومات التي تقدمها عند التسجيل، بما في ذلك الاسم، البريد الإلكتروني، رقم الهاتف، والصور الطبية. هذه المعلومات ضرورية لربط المرضى بالأطباء المعتمدين.'}</p>
-
+            <p>${isEn ? 'We collect information you provide when registering (name, email, phone), medical photos for case evaluation, device data and IP address for service improvement, and activity logs (offers, messages, reviews).' : 'نجمع المعلومات التي تقدمها عند التسجيل (الاسم، البريد، الهاتف)، الصور الطبية لتقييم الحالات، بيانات الجهاز وعنوان IP، وسجلات النشاط (العروض، الرسائل، التقييمات).'}</p>
             <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '2. How We Use Your Information' : '2. استخدام المعلومات'}</h2>
-            <p>${isEn ? 'We use personal information to provide our platform services, including account management, displaying cases to doctors, and facilitating communication. We do not sell or share your personal information with third parties without your consent.' : 'نستخدم المعلومات الشخصية لتقديم خدمات المنصة، بما في ذلك إنشاء الحسابات، عرض الحالات للأطباء، وتسهيل التواصل. لا نبيع أو نشارك معلوماتك مع أطراف ثالثة دون موافقتك.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '3. Data Protection' : '3. حماية المعلومات'}</h2>
-            <p>${isEn ? 'We implement appropriate security measures to protect your information from unauthorized access, modification, or disclosure. Sensitive data is encrypted and stored securely.' : 'نتخذ إجراءات أمنية مناسبة لحماية معلوماتك من الوصول غير المصرح به. يتم تشفير البيانات الحساسة وتخزينها بشكل آمن.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '4. Medical Photos' : '4. الصور الطبية'}</h2>
-            <p>${isEn ? 'Medical photos uploaded to the platform are used solely for case evaluation by certified doctors. These photos are protected and are not shared with any third party.' : 'الصور الطبية تُستخدم فقط لتقييم حالتك من قبل الأطباء المعتمدين. هذه الصور محمية ولا يتم مشاركتها مع أي طرف ثالث.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '5. Cookies' : '5. ملفات تعريف الارتباط'}</h2>
-            <p>${isEn ? 'We use cookies to improve your experience, save preferences, and analyze site usage.' : 'نستخدم الكوكيز لتحسين تجربتك، وحفظ تفضيلاتك، وتحليل استخدام الموقع.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '6. Your Rights' : '6. حقوقك'}</h2>
-            <p>${isEn ? 'You have the right to access, modify, or delete your personal information at any time. You may also request complete account deletion.' : 'لديك الحق في الوصول إلى معلوماتك وتعديلها أو حذفها. يمكنك أيضاً طلب حذف حسابك بالكامل.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '7. Children\'s Privacy' : '7. خصوصية الأطفال'}</h2>
-            <p>${isEn ? 'Our platform is not intended for users under 18 years of age. We do not knowingly collect information from minors.' : 'المنصة غير مخصصة للمستخدمين أقل من 18 عاماً. لا نجمع معلومات من القاصرين.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '8. Changes to This Policy' : '8. التغييرات'}</h2>
-            <p>${isEn ? 'We may update this privacy policy from time to time. We will notify users of any significant changes.' : 'قد نحدّث سياسة الخصوصية من وقت لآخر. سنخطرك بأي تغييرات جوهرية.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '9. Contact Us' : '9. التواصل'}</h2>
-            <p>${isEn ? 'If you have questions about this privacy policy, contact us at:' : 'للاستفسارات:'} <strong>privacy@htc.com</strong></p>
+            <p>${isEn ? 'We use information to provide platform services, connect patients with doctors, send notifications, improve user experience, and display relevant advertisements via Google AdSense.' : 'نستخدم المعلومات لتقديم خدمات المنصة، ربط المرضى بالأطباء، إرسال الإشعارات، تحسين التجربة، وعرض إعلانات عبر Google AdSense.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '3. Cookies & Tracking' : '3. ملفات تعريف الارتباط'}</h2>
+            <p>${isEn ? 'We use cookies: Essential (session, language, theme), Analytics (Google Analytics), Advertising (Google AdSense including DART cookie), and Preference (your settings). You can manage cookies via browser settings or opt out at Google Ads Settings.' : 'نستخدم الكوكيز: الأساسية (الجلسة، اللغة، المظهر)، التحليلية (Google Analytics)، الإعلانية (Google AdSense بما في ذلك ملف DART)، والتفضيلية (إعداداتك). يمكنك التحكم من إعدادات المتصفح أو إلغاء الاشتراك من إعدادات إعلانات Google.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '4. Advertising & AdSense' : '4. الإعلانات و AdSense'}</h2>
+            <p>${isEn ? 'We use Google AdSense to display ads. Google uses cookies (including DART) to serve ads based on your visits. Opt out: Google Ads Settings. Third-party vendors may also use cookies for ad serving.' : 'نستخدم Google AdSense لعرض الإعلانات. يستخدم Google ملفات تعريف الارتباط (بما في ذلك DART) لتقديم إعلانات. يمكنك الإلغاء من إعدادات إعلانات Google.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '5. Third-Party Services' : '5. خدمات الطرف الثالث'}</h2>
+            <ul style="padding-start:20px;margin:10px 0">
+              <li>Google AdSense — ${isEn ? 'Advertising' : 'الإعلانات'}</li>
+              <li>Google Analytics — ${isEn ? 'Usage analytics' : 'تحليلات الاستخدام'}</li>
+              <li>Google Fonts — ${isEn ? 'Typography' : 'الخطوط'}</li>
+              <li>Firebase — ${isEn ? 'Auth & database' : 'المصادقة وقاعدة البيانات'}</li>
+            </ul>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '6. Data Protection' : '6. حماية البيانات'}</h2>
+            <p>${isEn ? 'We implement security measures including TLS/SSL encryption. Medical photos are encrypted and shown anonymously to doctors until an offer is accepted. Photos are deleted 12 months after case closure.' : 'نتخذ إجراءات أمنية تشمل تشفير TLS/SSL. الصور الطبية مشفرة وتُعرض مجهولة للأطباء حتى قبول العرض. تُحذف الصور بعد 12 شهراً من إغلاق الحالة.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '7. Information Sharing' : '7. مشاركة المعلومات'}</h2>
+            <p>${isEn ? 'We do not sell your data. We share info only with: selected doctor after offer acceptance, legal authorities when required, and technical providers under confidentiality agreements.' : 'لا نبيع بياناتك. نشارك المعلومات فقط مع: الطبيب المختار بعد قبول العرض، الجهات القانونية عند الطلب، ومقدمي الخدمات التقنية بموجب اتفاقيات سرية.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '8. Children\'s Privacy' : '8. خصوصية الأطفال'}</h2>
+            <p>${isEn ? 'Our platform is for users 18+. We do not knowingly collect data from minors. If we discover a child provided data, we delete it immediately. Contact: emadh5156@gmail.com' : 'المنصة للبالغين 18+ فقط. لا نجمع بيانات من القاصرين. إذا اكتشفنا أن طفلاً قدّم بيانات، نحذفها فوراً. تواصل: emadh5156@gmail.com'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '9. Data Retention' : '9. الاحتفاظ بالبيانات'}</h2>
+            <p>${isEn ? 'Personal data is deleted within 30 days of account deletion request. Financial records retained for 7 years as legally required.' : 'يتم حذف البيانات الشخصية خلال 30 يوماً من طلب الحذف. السجلات المالية تُحفظ 7 سنوات حسب القانون.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '10. Your Rights' : '10. حقوقك'}</h2>
+            <p>${isEn ? 'Access, modify, or delete your data. Opt out of personalized ads. Control cookies via browser. Request account deletion anytime.' : 'الوصول لبياناتك وتعديلها أو حذفها. إلغاء الإعلانات المخصصة. التحكم في الكوكيز. طلب حذف الحساب.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '11. Changes' : '11. التغييرات'}</h2>
+            <p>${isEn ? 'We may update this policy. Continued use constitutes acceptance.' : 'قد نحدّث هذه السياسة. الاستمرار يعني القبول.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '12. Contact' : '12. التواصل'}</h2>
+            <p>${isEn ? 'Privacy inquiries:' : 'للاستفسارات:'} <strong>emadh5156@gmail.com</strong></p>
+            ${crossLinks}
           </div>
         </div>
       </div>
@@ -765,51 +778,98 @@
     const lang = localStorage.getItem('lang') || 'ar';
     const app = document.getElementById('app');
     const isEn = lang === 'en';
+    const crossLinks = `<div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;"><a href="#/privacy" style="color:var(--primary);font-weight:700">🔒 ${isEn ? 'Privacy Policy' : 'سياسة الخصوصية'}</a><a href="#/refund" style="color:var(--primary);font-weight:700">💰 ${isEn ? 'Refund Policy' : 'سياسة الاسترجاع'}</a><a href="#/contact" style="color:var(--primary);font-weight:700">📬 ${isEn ? 'Contact Us' : 'تواصل معنا'}</a><a href="#/about" style="color:var(--primary);font-weight:700">ℹ️ ${isEn ? 'About Us' : 'من نحن'}</a></div>`;
     app.innerHTML = `
       <div class="container">
         <div class="about-page">
           <div class="about-hero">
-            <h1>${isEn ? 'Terms of Use' : 'شروط الاستخدام'}</h1>
+            <h1>${isEn ? '📜 Terms of Use' : '📜 شروط الاستخدام'}</h1>
             <p class="about-subtitle">${isEn ? 'Last updated: April 2026' : 'آخر تحديث: أبريل 2026'}</p>
           </div>
           <div style="background:var(--bg-card);padding:32px;border-radius:14px;box-shadow:var(--shadow-md);line-height:2;color:var(--text)">
             <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '1. Acceptance' : '1. القبول'}</h2>
-            <p>${isEn ? 'By using Hair Transplant Connect, you agree to these terms and conditions. If you do not agree with any part, please do not use the platform.' : 'باستخدام المنصة، فإنك توافق على هذه الشروط. إذا كنت لا توافق على أي جزء، يرجى عدم استخدام المنصة.'}</p>
-
+            <p>${isEn ? 'By using Hair Transplant Connect, you agree to these terms.' : 'باستخدام المنصة، فإنك توافق على هذه الشروط.'}</p>
             <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '2. Service Description' : '2. وصف الخدمة'}</h2>
-            <p>${isEn ? 'The platform is an intermediary connecting hair transplant patients with specialized doctors. We do not provide direct medical services and are not responsible for surgical outcomes.' : 'المنصة وسيط يربط مرضى زراعة الشعر بالأطباء المتخصصين. نحن لا نقدم خدمات طبية مباشرة ولا نتحمل مسؤولية نتائج العمليات.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '3. User Accounts' : '3. حسابات المستخدمين'}</h2>
-            <p>${isEn ? 'Registration information must be accurate. You are responsible for maintaining the confidentiality of your password.' : 'يجب أن تكون المعلومات المقدمة صحيحة. أنت مسؤول عن سرية كلمة مرورك.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '4. Doctor Obligations' : '4. التزامات الأطباء'}</h2>
-            <p>${isEn ? 'Doctors must provide accurate information about their qualifications and hold valid medical licenses.' : 'يجب على الأطباء تقديم معلومات دقيقة عن مؤهلاتهم ولديهم التراخيص اللازمة.'}</p>
-
+            <p>${isEn ? 'The platform connects hair transplant patients with specialized doctors. We do not provide direct medical services.' : 'المنصة تربط مرضى زراعة الشعر بالأطباء المتخصصين. لا نقدم خدمات طبية مباشرة.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '3. Age Requirements' : '3. شروط العمر'}</h2>
+            <p>${isEn ? 'You must be 18+ to register. Provide accurate information.' : 'يجب أن يكون عمرك 18+ للتسجيل. قدم معلومات دقيقة.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '4. User Obligations' : '4. التزامات المستخدم'}</h2>
+            <p>${isEn ? 'No illegal, offensive, or misleading content. Doctors must hold valid licenses.' : 'لا محتوى غير قانوني أو مضلل. يجب على الأطباء حمل تراخيص سارية.'}</p>
             <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '5. Liability' : '5. المسؤولية'}</h2>
-            <p>${isEn ? 'The platform is not responsible for disputes between patients and doctors. We are a communication platform only and do not guarantee treatment outcomes.' : 'المنصة غير مسؤولة عن النزاعات بين المرضى والأطباء. نحن منصة تواصل فقط ولا نضمن نتائج أي علاج.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '6. Content' : '6. المحتوى'}</h2>
-            <p>${isEn ? 'Content must not contain illegal, offensive, or misleading material. We reserve the right to remove violating content.' : 'يجب ألا يحتوي المحتوى على مواد غير قانونية أو مضللة. نحتفظ بحق حذف أي محتوى مخالف.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '7. Payment' : '7. الدفع'}</h2>
-            <p>${isEn ? 'Offers are advisory. Payment is made directly between patient and doctor. The platform does not charge commissions currently.' : 'العروض إرشادية. الدفع يتم مباشرة بين المريض والطبيب. المنصة لا تتقاضى عمولات حالياً.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '8. Reviews' : '8. التقييمات'}</h2>
-            <p>${isEn ? 'Reviews must be honest. We reserve the right to remove abusive or misleading reviews.' : 'يجب أن تكون التقييمات صادقة. نحتفظ بحق حذف التقييمات المسيئة.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '9. Modifications' : '9. التعديلات'}</h2>
-            <p>${isEn ? 'We reserve the right to modify these terms at any time with user notification.' : 'نحتفظ بحق تعديل هذه الشروط في أي وقت مع إخطار المستخدمين.'}</p>
-
-            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '10. Governing Law' : '10. القانون المعمول به'}</h2>
-            <p>${isEn ? 'These terms are governed by applicable laws.' : 'تخضع هذه الشروط للقوانين المعمول بها.'}</p>
-
+            <p>${isEn ? 'The platform is a communication intermediary only. Not responsible for treatment outcomes or doctor-patient disputes.' : 'المنصة وسيط تواصل فقط. غير مسؤولة عن نتائج العلاج أو النزاعات.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '6. Payment' : '6. الدفع'}</h2>
+            <p>${isEn ? 'Payment is made directly between patient and doctor. No commissions currently.' : 'الدفع يتم مباشرة بين المريض والطبيب. لا عمولات حالياً.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '7. Account Deletion' : '7. حذف الحساب'}</h2>
+            <p>${isEn ? 'Request deletion anytime. Completed within 30 days. Contact: emadh5156@gmail.com' : 'يمكنك طلب الحذف في أي وقت. يتم خلال 30 يوماً.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '8. Governing Law' : '8. القانون المعمول به'}</h2>
+            <p>${isEn ? 'Governed by applicable laws.' : 'تخضع للقوانين المعمول بها.'}</p>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '9. Google Play Compliance' : '9. التوافق مع Google Play'}</h2>
+            <ul style="padding-start:20px;margin:10px 0"><li>${isEn ? 'Complies with Google Play policies' : 'يتوافق مع سياسات Google Play'}</li><li>${isEn ? 'No unnecessary data collection' : 'لا نجمع بيانات زائدة عن الحاجة'}</li><li>${isEn ? 'No malware' : 'لا يحتوي على برامج ضارة'}</li><li>${isEn ? 'Location with consent only' : 'جمع الموقع بموافقة فقط'}</li><li>${isEn ? 'Data deletion provided' : 'نوفر آلية لحذف البيانات'}</li><li>${isEn ? 'No data selling' : 'لا نبيع البيانات'}</li><li>${isEn ? 'Ads comply with policies' : 'الإعلانات تتوافق مع السياسات'}</li><li>${isEn ? '18+ content rating' : 'تصنيف عمر 18+'}</li><li>${isEn ? 'User data protected' : 'بيانات المستخدم محمية'}</li><li>${isEn ? 'No deceptive behavior' : 'لا سلوك مضلل'}</li><li>${isEn ? 'Necessary permissions only' : 'أذونات ضرورية فقط'}</li><li>${isEn ? 'Privacy policy provided' : 'نوفر سياسة خصوصية'}</li><li>${isEn ? 'Opt-out respected' : 'نحترم إلغاء الاشتراك'}</li><li>${isEn ? 'Quality standards met' : 'معايير الجودة مطبقة'}</li><li>${isEn ? 'Security standards met' : 'معايير الأمان مطبقة'}</li></ul>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '10. Apple App Store Compliance' : '10. التوافق مع Apple App Store'}</h2>
+            <ul style="padding-start:20px;margin:10px 0"><li>${isEn ? 'Complies with Apple guidelines' : 'يتوافق مع إرشادات Apple'}</li><li>${isEn ? 'No data beyond functionality' : 'لا بيانات زائدة عن الوظائف'}</li><li>${isEn ? 'Clear privacy policy' : 'سياسة خصوصية واضحة'}</li><li>${isEn ? 'No hidden features' : 'لا ميزات خفية'}</li><li>${isEn ? 'User privacy respected' : 'خصوصية المستخدم محمية'}</li><li>${isEn ? '18+ rating suitable' : 'تصنيف 18+ مناسب'}</li><li>${isEn ? 'Location usage disclosed' : 'يتم الإفصاح عن استخدام الموقع'}</li><li>${isEn ? 'No private APIs' : 'لا APIs خاصة'}</li><li>${isEn ? 'Data management provided' : 'نوفر إدارة البيانات'}</li><li>${isEn ? 'Content complies with Apple' : 'المحتوى يتوافق مع Apple'}</li><li>${isEn ? 'Latest iOS supported' : 'يدعم أحدث iOS'}</li><li>${isEn ? 'Crash reports handled' : 'تقارير الأعطال تُعالج'}</li><li>${isEn ? 'No system interference' : 'لا تأثير على النظام'}</li><li>${isEn ? 'IP rights reserved' : 'حقوق الملكية محفوظة'}</li><li>${isEn ? 'Apple requirements met' : 'متطلبات Apple مطبقة'}</li></ul>
+            <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '11. Google AdSense Compliance' : '11. التوافق مع Google AdSense'}</h2>
+            <ul style="padding-start:20px;margin:10px 0"><li>${isEn ? 'Ads comply with AdSense policies' : 'الإعلانات تتوافق مع سياسات AdSense'}</li><li>${isEn ? 'No clicking own ads' : 'لا ننقر على إعلاناتنا'}</li><li>${isEn ? 'Ad placement appropriate' : 'وضع الإعلانات مناسب'}</li><li>${isEn ? 'Users can opt out of ads' : 'يمكن إلغاء الإعلانات المخصصة'}</li><li>${isEn ? 'No code modification' : 'لا نعدّل الكود'}</li><li>${isEn ? 'Appropriate ad content' : 'محتوى الإعلانات مناسب'}</li><li>${isEn ? 'GDPR/CCPA compliant' : 'نتوافق مع GDPR و CCPA'}</li><li>${isEn ? 'Sensitive categories excluded' : 'الفئات الحساسة مستبعدة'}</li><li>${isEn ? 'Cookies disclosed' : 'ملفات تعريف الارتباط مذكورة'}</li><li>${isEn ? 'No ads on empty pages' : 'لا إعلانات على صفحات فارغة'}</li><li>${isEn ? 'Ad count within limits' : 'عدد الإعلانات ضمن الحدود'}</li></ul>
             <div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:10px;padding:16px;margin-top:24px">
               <strong style="color:#92400e">⚠️ ${isEn ? 'Medical Disclaimer' : 'إخلاء مسؤولية طبية'}:</strong>
-              <p style="margin:8px 0 0;color:#92400e;font-size:0.95rem">${isEn ? 'This platform is for informational purposes only and does not provide medical advice. Consult your specialist before making any decisions. Hair transplant results vary by individual.' : 'هذه المنصة لأغراض إعلامية فقط ولا تقدم نصائح طبية. استشر طبيبك المختص قبل اتخاذ أي قرارات. نتائج زراعة الشعر تختلف من شخص لآخر.'}</p>
+              <p style="margin:8px 0 0;color:#92400e;font-size:0.95rem">${isEn ? 'This platform is for informational purposes only and does not provide medical advice. Consult your specialist. Results vary by individual.' : 'هذه المنصة لأغراض إعلامية فقط ولا تقدم نصائح طبية. استشر طبيبك المختص. النتائج تختلف من شخص لآخر.'}</p>
             </div>
+            ${crossLinks}
           </div>
         </div>
       </div>
+    `;
+  }
+
+  // ====== REFUND POLICY ======
+  function renderRefund() {
+    const lang = localStorage.getItem('lang') || 'ar';
+    const app = document.getElementById('app');
+    const isEn = lang === 'en';
+    const crossLinks = `<div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;"><a href="#/privacy" style="color:var(--primary);font-weight:700">🔒 ${isEn ? 'Privacy Policy' : 'سياسة الخصوصية'}</a><a href="#/terms" style="color:var(--primary);font-weight:700">📄 ${isEn ? 'Terms of Service' : 'شروط الاستخدام'}</a><a href="#/contact" style="color:var(--primary);font-weight:700">📬 ${isEn ? 'Contact Us' : 'تواصل معنا'}</a><a href="#/about" style="color:var(--primary);font-weight:700">ℹ️ ${isEn ? 'About Us' : 'من نحن'}</a></div>`;
+    app.innerHTML = `
+      <div class="container"><div class="about-page"><div class="about-hero">
+        <h1>${isEn ? '💰 Refund & Replacement Policy' : '💰 سياسة الاسترجاع والاستبدال'}</h1>
+        <p class="about-subtitle">${isEn ? 'Last updated: April 2026' : 'آخر تحديث: أبريل 2026'}</p>
+      </div><div style="background:var(--bg-card);padding:32px;border-radius:14px;box-shadow:var(--shadow-md);line-height:2;color:var(--text)">
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '1. Introduction' : '1. مقدمة'}</h2><p>${isEn ? 'We want you to be satisfied. This outlines our refund and replacement procedures.' : 'نريدك راضياً تماماً. توضح هذه السياسة إجراءات الاسترجاع والاستبدال.'}</p>
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '2. Eligibility' : '2. أهلية الاسترجاع'}</h2><ul style="padding-start:20px;margin:10px 0"><li>${isEn ? 'Within 14 days of purchase' : 'خلال 14 يوماً من الشراء'}</li><li>${isEn ? 'Service less than 20% utilized' : 'الخدمة أقل من 20% استخدام'}</li><li>${isEn ? 'Not for terminated accounts' : 'لا للحسابات المنتهية'}</li></ul>
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '3. Process' : '3. الإجراءات'}</h2><p>${isEn ? 'Contact emadh5156@gmail.com with your email and reason. We review within 5 business days.' : 'تواصل مع emadh5156@gmail.com مع البريد والسبب. نراجع خلال 5 أيام عمل.'}</p>
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '4. Processing Time' : '4. مدة المعالجة'}</h2><p>${isEn ? '7-14 business days to original payment method.' : '7-14 يوم عمل إلى طريقة الدفع الأصلية.'}</p>
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '5. Replacement' : '5. الاستبدال'}</h2><p>${isEn ? 'For unresolved technical issues within 48 hours, we may offer service extension or upgrade.' : 'للمشاكل التقنية غير المحلولة خلال 48 ساعة، قد نقدم تمديد أو ترقية.'}</p>
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '6. Cancellation' : '6. الإلغاء'}</h2><p>${isEn ? 'Cancel anytime through settings. Takes effect at end of billing period.' : 'يمكن الإلغاء في أي وقت. ي生效 في نهاية فترة الفوترة.'}</p>
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '7. Exceptions' : '7. الاستثناءات'}</h2><ul style="padding-start:20px;margin:10px 0"><li>${isEn ? 'No refunds for terminated accounts' : 'لا استرجاع للحسابات المنتهية'}</li><li>${isEn ? 'Promotional plans have special terms' : 'الباقات الترويجية تخضع لشروط خاصة'}</li><li>${isEn ? 'No refunds after 14-day window' : 'لا استرجاع بعد 14 يوماً'}</li></ul>
+        <h2 style="color:var(--primary);margin:20px 0 10px">${isEn ? '8. Contact' : '8. التواصل'}</h2><p>${isEn ? 'For refund requests:' : 'لطلبات الاسترجاع:'} <strong>emadh5156@gmail.com</strong></p>
+        ${crossLinks}
+      </div></div></div>
+    `;
+  }
+
+  // ====== CONTACT US ======
+  function renderContact() {
+    const lang = localStorage.getItem('lang') || 'ar';
+    const app = document.getElementById('app');
+    const isEn = lang === 'en';
+    app.innerHTML = `
+      <div class="container"><div class="about-page"><div class="about-hero">
+        <h1>${isEn ? '📬 Contact Us' : '📬 تواصل معنا'}</h1>
+        <p class="about-subtitle">${isEn ? "We'd love to hear from you!" : 'يسعدنا سماعك!'}</p>
+      </div><div style="background:var(--bg-card);padding:32px;border-radius:14px;box-shadow:var(--shadow-md);color:var(--text)">
+        <div style="background:var(--bg-input);border-radius:12px;padding:16px;margin-bottom:20px;">
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);"><span style="font-size:18px">📧</span><div><div style="font-size:11px;color:var(--text-muted)">${isEn ? 'Email' : 'البريد'}</div><div style="color:var(--primary);font-weight:700">emadh5156@gmail.com</div></div></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:8px 0;"><span style="font-size:18px">⏰</span><div style="font-size:12px;color:var(--text-muted)">${isEn ? 'We respond within 24-48 hours' : 'نرد خلال 24-48 ساعة'}</div></div>
+        </div>
+        <div style="margin-bottom:16px"><label style="display:block;margin-bottom:6px;font-weight:600;color:var(--text-secondary)">${isEn ? 'Your Name *' : 'اسمك *'}</label><input type="text" id="contactName" placeholder="${isEn ? 'Your full name' : 'اسمك الكامل'}" style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg-input);color:var(--text);font-family:inherit;font-size:15px;"></div>
+        <div style="margin-bottom:16px"><label style="display:block;margin-bottom:6px;font-weight:600;color:var(--text-secondary)">${isEn ? 'Your Email *' : 'بريدك *'}</label><input type="email" id="contactEmail" placeholder="you@example.com" style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg-input);color:var(--text);font-family:inherit;font-size:15px;"></div>
+        <div style="margin-bottom:16px"><label style="display:block;margin-bottom:6px;font-weight:600;color:var(--text-secondary)">${isEn ? 'Subject *' : 'الموضوع *'}</label><input type="text" id="contactSubject" placeholder="${isEn ? 'Message subject' : 'موضوع الرسالة'}" style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg-input);color:var(--text);font-family:inherit;font-size:15px;"></div>
+        <div style="margin-bottom:16px"><label style="display:block;margin-bottom:6px;font-weight:600;color:var(--text-secondary)">${isEn ? 'Your Message *' : 'رسالتك *'}</label><textarea id="contactMessage" rows="4" placeholder="${isEn ? 'Write your message...' : 'اكتب رسالتك...'}" style="width:100%;padding:12px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg-input);color:var(--text);font-family:inherit;font-size:15px;resize:vertical;"></textarea></div>
+        <button class="btn btn-accent btn-lg" onclick="handleContactSend()" style="width:100%">📤 ${isEn ? 'Send Message' : 'إرسال'}</button>
+        <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px;">
+          <a href="#/privacy" style="color:var(--primary);font-weight:700">🔒 ${isEn ? 'Privacy Policy' : 'سياسة الخصوصية'}</a>
+          <a href="#/terms" style="color:var(--primary);font-weight:700">📄 ${isEn ? 'Terms of Service' : 'شروط الاستخدام'}</a>
+          <a href="#/refund" style="color:var(--primary);font-weight:700">💰 ${isEn ? 'Refund Policy' : 'سياسة الاسترجاع'}</a>
+          <a href="#/about" style="color:var(--primary);font-weight:700">ℹ️ ${isEn ? 'About Us' : 'من نحن'}</a>
+        </div>
+      </div></div></div>
     `;
   }
 
@@ -1942,6 +2002,21 @@
     localStorage.setItem('htc_cookie_accepted', 'true');
     document.getElementById('cookieBanner').style.display = 'none';
   };
+
+  // ====== CONTACT FORM HANDLER ======
+  function handleContactSend() {
+    const name = document.getElementById('contactName')?.value?.trim();
+    const email = document.getElementById('contactEmail')?.value?.trim();
+    const subject = document.getElementById('contactSubject')?.value?.trim();
+    const message = document.getElementById('contactMessage')?.value?.trim();
+    if (!name || !email || !subject || !message) {
+      showToast('error', 'All fields are required');
+      return;
+    }
+    const body = 'Name: ' + name + '%0AEmail: ' + email + '%0A%0A' + encodeURIComponent(message);
+    window.location.href = 'mailto:emadh5156@gmail.com?subject=' + encodeURIComponent('[HTC] ' + subject) + '&body=' + body;
+    showToast('success', '✅ Email client opened');
+  }
 
   // ====== PWA ======
   function showInstallBtn() {
